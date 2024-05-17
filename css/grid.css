@@ -1,0 +1,94 @@
+.grid-container {
+    display: grid;
+    margin: auto;
+}
+
+.square {
+    border: 1px #494949 solid;
+    color: #b6b6b6;
+    font-size: 1.3vh;
+}
+
+.tile0 { /* Wall */
+    background-color: #686666;
+}
+
+.tile1 { /* Road */
+    background-color: transparent;
+}
+
+.tile2 { /* Start */
+    background-color: #bb1919;
+}
+
+.tile3 { /* End */
+    background-color: #03b40b;
+}
+
+.tile4 { /* Visited */
+    background-color: #5f5e5f46;
+}
+
+.tile5 { /* Path */
+    background-color: #5bdf6273;
+}
+
+.lock {
+    pointer-events: none;
+}
+
+.direction0 { /* North */
+    /* background-image: url('../img/direction/north.png'); */
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.direction1 { /* South */
+    /* background-image: url('../img/direction/south.png'); */
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.direction2 { /* East */
+    /* background-image: url('../img/direction/east.png'); */
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.direction3 { /* West */
+    /* background-image: url('../img/direction/west.png'); */
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.direction4 { /* North-east */
+    /* background-image: url('../img/direction/north_east.png'); */
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.direction5 { /* North-west */
+    /* background-image: url('../img/direction/north_west.png'); */
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.direction6 { /* South-east */
+    /* background-image: url('../img/direction/south_east.png'); */
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.direction7 { /* South-west */
+    /* background-image: url('../img/direction/south_west.png'); */
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center center;
+}

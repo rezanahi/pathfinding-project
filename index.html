@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <script src="./js/grid.js"></script>
+    <script type="module" src="./js/finder.js"></script>
+    <link rel="stylesheet" href="css/grid.css">
+    <link rel="stylesheet" href="css/ui.css">
+    <title>پروژه هوش مصنوعی</title>
+    <link rel="icon" href="/img/shahed.png" type="image/x-icon">
+</head>
+
+<body>
+
+    <div class="menu">
+        <div class="section-title">
+            <span class="section-title__dash"></span>
+            <h2 class="section-title__text">تنظیمات زمین</h2>
+        </div>
+        <div class="section">
+            <div class="btn-group">
+                <p class="btn-group__text">تعیین نقطه شروع</p>
+                <button class="btn-group__btn btn-start" id="button_start" title="نقطه شروع"></button>
+            </div>
+            <div class="btn-group">
+                <p class="btn-group__text">تعیین نقطه پایان</p>
+                <button class="btn-group__btn btn-end" id="button_end" title="نقطه پایان"></button>
+            </div>
+            <div class="btn-group">
+                <p class="btn-group__text">اضافه کردن مانع</p>
+                <button class="btn-group__btn btn-wall" id="button_wall" title="اضافه کردن مانع"></button>
+            </div>
+            <div class="btn-group">
+                <p class="btn-group__text">پاک کردن مانع</p>
+                <button class="btn-group__btn btn-erase" id="button_road" title="پاک کن"></button>
+            </div>
+        </div>
+
+
+        <!--  -->
+
+        <div class="section-title">
+            <span class="section-title__dash"></span>
+            <h2 class="section-title__text">تنظیمات شروع</h2>
+        </div>
+        <div class="section">
+            <div class="btn-group">
+                <p class="btn-group__text">شروع</p>
+                <button class="btn-group__btn btn-play" id="play_button" title="شروع"></button>
+            </div>
+            <div class="btn-group">
+                <p class="btn-group__text">راه اندازی مجدد</p>
+                <button class="btn-group__btn btn-reset" id="reset_button" onclick="grid.reset()" title="ریست"></button>
+            </div>
+            <div class="btn-group">
+                <p class="btn-group__text">انتخاب الگوریتم</p>
+                <div class="algorithm-select-container">
+                    <select class="algorithm-select" id="algorithm">
+                        <option value="a_star" selected>A*</option>
+                        <option value="bfs">BFS</option>
+                        <option value="dfs">DFS</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!--  -->
+
+        <div class="section-title">
+            <span class="section-title__dash"></span>
+            <h2 class="section-title__text">اطلاعات اجرای الگوریتم</h2>
+        </div>
+        <div class="section">
+            <div class="btn-group">
+                <p class="btn-group__text">زمان اجرا - (میلی ثانیه)</p>
+                <p class="btn-group__text" id="algorithm_time">0</p>
+            </div>
+            <div class="btn-group">
+                <p class="btn-group__text">تعداد نود های بازشده</p>
+                <p class="btn-group__text" id="number_of_opened_node">0</p>
+            </div>
+        </div>
+
+        <!--  -->
+
+        <div class="section-title">
+            <span class="section-title__dash"></span>
+            <h2 class="section-title__text">پیغام ها</h2>
+        </div>
+        <div class="section">
+            <div class="btn-group">
+                <p class="btn-group__text massege-text" id="massege_text">ساخته شده با عشق</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container topbar">
+        <div class="row">
+            <!-- <div class="col-sm-12 col-lg-4 d-flex justify-content-center align-items-center button-box">
+                <div class="button-group">
+                    <button class="button button-wall" id="button_wall" title="Wall"></button>
+                    <button class="button button-road" id="button_road" title="Eraser"></button>
+                    <button class="button button-start" id="button_start" title="Start point"></button>
+                    <button class="button button-end" id="button_end" title="End point"></button>
+                </div>
+            </div> -->
+
+            <!-- <div class="col-sm-12 col-lg-4 d-flex justify-content-center align-items-center button-box">
+                <div class="button-group">
+                    <button class="button button-play" id="play_button" title="Play"></button>
+                    <button class="button button-reset" id="reset_button" onclick="grid.reset()" title="Reset"></button>
+                    <div class="algorithm-box">
+                        <div>
+                            <div class="algorithm-select-container">
+                                <select class="algorithm-select" id="algorithm">
+                                    <option value="a_star" selected>A*</option>
+                                    <option value="bfs">BFS</option>
+                                    <option value="dfs">DFS</option>
+                                </select>
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+            <div class="d-none  col-sm-12 col-lg-12 d-flex justify-content-end align-items-center button-box">
+                <div class="button-group">
+                    <input class="size-input" id="grid_columns" type="number" placeholder="Columns" value="15" min="1" title="Width">
+                    <input class="size-input" id="grid_rows" type="number" placeholder="Rows" value="15" min="1" title="Height">
+                    <input type="range" min="1" max="30" value="15" id="speed_slider" title="Speed">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="field" style="width: 80vw; height: 80vh; margin: auto 20rem;"></div>
+
+</body>
+
+<script>
+    var grid_container = document.getElementById("field");
+    var grid = new Grid("field", 15, 15);
+    
+    window.addEventListener("resize", function () {
+        grid.scale();
+    });
+    
+    var columns_input = document.getElementById("grid_columns");
+    columns_input.addEventListener("change", function () {
+        grid.resize(parseInt(columns_input.value), parseInt(rows_input.value));
+        grid.reset();
+    });
+    
+    var rows_input = document.getElementById("grid_rows");
+    rows_input.addEventListener("change", function () {
+        grid.resize(parseInt(columns_input.value), parseInt(rows_input.value));
+        grid.reset();
+    });
+
+    document.getElementById("button_wall").addEventListener("click", function () {
+        grid.setCurrentMode(WALL_TILE);
+        grid.reset();
+    });
+    document.getElementById("button_road").addEventListener("click", function () {
+        grid.setCurrentMode(ROAD_TILE);
+        grid.reset();
+    });
+    document.getElementById("button_start").addEventListener("click", function () {
+        grid.setCurrentMode(START_TILE);
+        grid.reset();
+    });
+    document.getElementById("button_end").addEventListener("click", function () {
+        grid.setCurrentMode(END_TILE);
+        grid.reset();
+    });
+
+    document.getElementById("algorithm").addEventListener("change", function () {
+        switch (this.value) {
+            
+            case "a_star":
+            case "bfs":
+            case "dfs":
+                break;
+        }
+    });
+
+    document.getElementById("play_button").addEventListener("click", async function () {
+
+
+        if (grid.isValid()) {
+            var algorithm = document.getElementById("algorithm").value;
+            grid.reset();
+            lock();
+            await search(grid, algorithm);
+            unlock();
+        } else {
+            document.getElementById("massege_text").innerHTML = "لطفا نقطه شروع و پایان را انتخاب نمایید"
+        }
+    });
+
+    document.getElementById("speed_slider").addEventListener("input", function () {
+        animation_speed(document.getElementById("speed_slider").value);
+    });
+
+    const to_lock = [
+        "play_button", "reset_button",
+        "grid_columns", "grid_rows",
+        "button_wall", "button_road", "button_start", "button_end",
+        "algorithm", 
+    ];
+
+    function lock() {
+        to_lock.forEach(element => {
+            document.getElementById(element).classList.add("lock")
+        });
+        grid.lock();
+    }
+
+    function unlock() {
+        to_lock.forEach(element => {
+            document.getElementById(element).classList.remove("lock")
+        });
+        grid.unlock();
+    }
+</script>
+
+</html>
